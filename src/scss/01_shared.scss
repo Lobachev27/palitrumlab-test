@@ -72,10 +72,13 @@ a {
   position: relative;
   z-index: 2;
   &-header{
-    padding: 14px 50px;
+    padding: 14px 30px;
   }
   &-sidebar{
-    padding: 0 50px;
+    padding: 0 30px;
+  }
+  &-section{
+    padding: 75px 30px;
   }
 }
 
@@ -115,6 +118,12 @@ a {
     height: 65px;
     border-radius: 12px;
   }
+  &-intro{
+    font-size: 20px;
+    width: 225px;
+    height: 58px;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -122,6 +131,18 @@ a {
 
   main{
     margin-top: 100px;
+  }
+
+  .container {
+    &-header{
+      padding: 14px 50px;
+    }
+    &-sidebar{
+      padding: 0 50px;
+    }
+    &-section{
+      padding: 75px 100px;
+    }
   }
 
   /*Кнопки (min-width: 1000px)*/
