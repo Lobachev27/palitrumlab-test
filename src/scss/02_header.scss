@@ -1,2 +1,249 @@
 @import "partials/params";
 @import "partials/mixins";
+
+/*Header*/
+
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: $text-color-main;
+  box-shadow: 0 2px 6px 0 rgba(15, 33, 53, 0.2);
+  z-index: 50;
+  &.scrolled{
+    & .container{
+      grid-template-columns: 34px auto;
+    }
+    & .header_logo{
+      height: 0;
+      &_link{
+        height: 0;
+      }
+      &_img{
+        width: 0;
+        height: 0;
+      }
+      &.scrolled{
+        height: max-content;
+        & .header_logo_link{
+          height: 42px;
+        }
+        & .header_logo_img{
+          width: 34px;
+          height: 42px;
+        }
+      }
+    }
+  }
+  & .container{
+    display: grid;
+    grid-template-columns: 110px auto;
+    grid-column-gap: 50px;
+    align-items: center;
+  }
+  &_logo{
+    height: max-content;
+    &_wrapper{
+      display: flex;
+    }
+    &_link{
+      display: block;
+      height: 42px;
+      padding: 0;
+      margin: 0;
+    }
+    &_img{
+      object-fit: contain;
+      object-position: center;
+      width: 110px;
+      height: 42px;
+      transition: all 0.5s;
+      &:hover{
+        transform: scale(0.8);
+        transition: all 0.5s;
+      }
+    }
+    &.scrolled{
+      height: 0;
+      & .header_logo_img{
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+  &_nav{
+    display: none;
+  }
+  &_hamburger{
+    justify-self: end;
+    display: block;
+    align-self: center;
+    background: url("../../img/menu.svg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 30px;
+    height: 21px;
+    transition: 0.3s;
+    &:hover{
+      background: url("../../img/menu-hover.svg") no-repeat;
+      background-position: center;
+      background-size: cover;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    &.active{
+      display: block;
+      align-self: center;
+      background: url("../../img/cross.svg") no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 30px;
+      height: 30px;
+      transition: 0.3s;
+      &:hover{
+        background: url("../../img/cross-hover.svg") no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*Выпадающее меню*/
+
+.sidebar{
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - 70px);
+  top: 70px;
+  background-color: $text-color-main;
+  box-shadow: 0 2px 6px 0 rgba(15, 33, 53, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  z-index: 50;
+  transform: translateX(-120%);
+  transition: 1s;
+  &_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 60px 0;
+    &_link{
+      display: block;
+      position: relative;
+      font-size: 24px;
+      font-weight: 700;
+      color: $text-color-white;
+      transition: 0.3s;
+      margin-bottom: 50px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &:hover{
+        color: $color-pink;
+        transition: 0.3s;
+      }
+    }
+  }
+  &.active{
+    transform: translateX(0);
+    transition: 1s;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  /*Header (min-width: 1000px)*/
+
+  .header{
+    position: fixed;
+    width: 100%;
+    background-color: $text-color-main;
+    z-index: 50;
+    &.scrolled{
+      & .container{
+        grid-template-columns: 34px auto 146px;
+        padding: 14px 50px;
+      }
+      & .btn-header{
+        display: flex;
+      }
+      & .header_nav{
+        justify-self: start;
+        &_link{
+          &:before{
+            bottom: -27px;
+          }
+        }
+      }
+    }
+    & .container{
+      grid-template-columns: 140px auto;
+      padding: 23px 50px;
+    }
+    .btn-header{
+      display: none;
+    }
+    &_logo{
+      &_link{
+        height: 54px;
+      }
+      &_img{
+        width: 140px;
+        height: 54px;
+      }
+    }
+    &_nav{
+      display: flex;
+      align-items: center;
+      justify-self: end;
+      &_link{
+        display: block;
+        position: relative;
+        font-size: 16px;
+        font-weight: 700;
+        color: $text-color-white;
+        margin-right: 54px;
+        transition: 0.3s;
+        &:before{
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 8px;
+          background-color: $color-pink;
+          bottom: -42px;
+          transition: 0.3s;
+          opacity: 0;
+        }
+        &:last-child{
+          margin-right: 0;
+        }
+        &:hover{
+          transition: 0.3s;
+          &:before{
+            opacity: 1;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+    &_hamburger{
+      display: none;
+      &.active{
+        display: none;
+      }
+    }
+  }
+
+  /*Выпадающее меню (min-width: 1000px)*/
+
+  .sidebar{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  /*Header (min-width: 1366px)*/
+
+
+}
