@@ -1,2 +1,58 @@
 @import "partials/params";
 @import "partials/mixins";
+
+/*Подписка*/
+
+.subscription{
+  position: relative;
+  &_title{
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.45;
+  }
+  &_description{
+    font-size: 14px;
+    line-height: 1.43;
+    color: $text-color-grey;
+    margin: 20px 0 30px;
+  }
+  &_link{
+    display: inline;
+    color: $color-pink;
+    margin: 0 5px;
+    transition: 0.3s;
+    &:hover{
+      color: $color-pink-hover;
+      transition: 0.3s;
+    }
+  }
+  &_row{
+    display: grid;
+    grid-template-columns: 183px auto;
+    grid-column-gap: 17px;
+    justify-items: start;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  /*Подписка (min-width: 1000px)*/
+
+  .subscription{
+    & .container{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 40px;
+    }
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  /*Подписка (min-width: 1366px)*/
+
+  .subscription{
+    & .container{
+      grid-column-gap: 120px;
+    }
+  }
+}

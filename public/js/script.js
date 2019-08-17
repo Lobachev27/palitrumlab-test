@@ -72,8 +72,8 @@ $(document).ready(function() {
     } else if (screenWidth > 982 && swiper != undefined) {
       swiper.destroy();
       swiper = undefined;
-      $('.intro .swiper-wrapper').removeAttr('style');
-      $('.intro .swiper-slide').removeAttr('style');
+      $('.article .swiper-wrapper').removeAttr('style');
+      $('.article .swiper-slide').removeAttr('style');
     }
   }
 
