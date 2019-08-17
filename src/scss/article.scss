@@ -1,2 +1,226 @@
 @import "partials/params";
 @import "partials/mixins";
+
+/*Кейсы*/
+
+.article{
+  position: relative;
+  background-color: $article-bg;
+  &_title{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  & .swiper-container{
+    width: 960px;
+    padding: 0 5px 10px;
+    margin: 0 -5px;
+  }
+  & .swiper-button-box{
+    position: absolute;
+    width: 95px;
+    height: 11px;
+    top: 95px;
+    right: 30px;
+  }
+  & .swiper-button-next,
+  & .swiper-button-prev{
+    display: block;
+    outline: none;
+    top: 17px;
+  }
+  & .swiper-button-next{
+    background: url("../../img/arrow.svg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    height: 10px;
+    right: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    &:hover{
+      background: url("../../img/arrow-hover.svg") no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+  }
+  & .swiper-button-prev{
+    background: url("../../img/arrow.svg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    height: 10px;
+    left: 0;
+    opacity: 0.8;
+    transform: rotate(180deg);
+    transition: opacity 0.3s;
+    &:hover{
+      background: url("../../img/arrow-hover.svg") no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+  }
+  &_box{
+    position: relative;
+    overflow: hidden;
+    height: 397px;
+    border-radius: 10px;
+    box-shadow: 0 2px 14px 0 rgba(15, 33, 53, 0.11);
+    background-color: #ffffff;
+    &.text{
+      padding: 20px 24px;
+    }
+    &.four{
+      & .article_description{
+        -webkit-line-clamp: 8;
+      }
+    }
+    &.two{
+      & .article_description{
+        -webkit-line-clamp: 11;
+      }
+    }
+  }
+  &_img{
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    transition: all 0.6s;
+    z-index: 1;
+    &_wrapper{
+      position: relative;
+      overflow: hidden;
+      height: 163px;
+    }
+    &_link{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+  }
+  &_info{
+    height: 234px;
+    padding: 20px 24px;
+  }
+  &_data{
+    font-size: 14px;
+    color: $text-color-grey;
+  }
+  &_name{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5em;
+    max-height: 120px;
+    overflow: hidden;
+    margin: 10px 0;
+    transition: 0.3s;
+    &:hover{
+      color: $color-pink;
+      transition: 0.3s;
+    }
+  }
+  &_description{
+    font-size: 14px;
+    line-height: 1.43em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  &_more{
+    position: absolute;
+    display: block;
+    font-size: 14px;
+    line-height: 1.7em;
+    font-weight: 500;
+    color: $text-color-grey;
+    bottom: 20px;
+    width: calc(100% - 48px);
+    transition: 0.5s;
+    &:hover{
+      color: $color-pink;
+      transition: 0.5s;
+      &:after{
+        background: url("../../img/arrow-hover.svg") no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 10px;
+        width: 60px;
+        right: 0;
+        transition: 0.5s;
+        transition-delay: 0.3s;
+      }
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      background: url("../../img/arrow.svg") no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 40px;
+      height: 10px;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: 0.5s;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  /*Кейсы (min-width: 1000px)*/
+
+  .article{
+    & .swiper-container{
+      width: 100%;
+      overflow: visible;
+      margin: 0;
+      padding: 0;
+    }
+    & .swiper-wrapper{
+      display: grid;
+      width: 100%;
+      grid-template-columns: calc(33.33% - 16.66px) calc(33.33% - 16.66px) calc(33.33% - 16.66px);
+      grid-column-gap: 25px;
+      justify-items: center;
+      align-items: center;
+    }
+    & .swiper-slide{
+    }
+    & .swiper-button-box{
+      display: none;
+    }
+    &_box{
+      &.four{
+        & .article_description{
+          -webkit-line-clamp: 7;
+        }
+      }
+      &.two{
+        & .article_description{
+          -webkit-line-clamp: 10;
+        }
+      }
+    }
+    &_more{
+      &:hover{
+        &:after{
+          width: 50px;
+          right: 0;
+        }
+      }
+      &:after{
+        width: 40px;
+        right: 10px;
+      }
+    }
+  }
+}

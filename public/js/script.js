@@ -50,3 +50,36 @@ $(document).ready(function() {
 $(window).scroll(function(){
   $('.intro').bgscroll();
 });
+
+/*Кейсы превращаются в слайдер на мобиле*/
+
+$(document).ready(function() {
+  var swiper = undefined;
+  function initSwiper() {
+    var screenWidth = $(window).width();
+    if(screenWidth < 983 && swiper == undefined) {
+      swiper = new Swiper('.article .swiper-container', {
+        loop: true,
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        spaceBetween: 25,
+        autoHeight: 'true',
+        navigation: {
+          nextEl: '.article .swiper-button-next',
+          prevEl: '.article .swiper-button-prev'
+        }
+      });
+    } else if (screenWidth > 982 && swiper != undefined) {
+      swiper.destroy();
+      swiper = undefined;
+      $('.intro .swiper-wrapper').removeAttr('style');
+      $('.intro .swiper-slide').removeAttr('style');
+    }
+  }
+
+  initSwiper();
+
+  $(window).on('resize', function(){
+    initSwiper();
+  });
+});
